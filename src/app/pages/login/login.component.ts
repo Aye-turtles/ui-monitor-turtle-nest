@@ -1,11 +1,13 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
-import {AuthService} from "./auth.service";
 import {MatFormField, MatFormFieldModule, MatLabel} from "@angular/material/form-field";
 import {MatInput, MatInputModule} from "@angular/material/input";
 import {MatButton} from "@angular/material/button";
 import {Router} from "@angular/router";
+import {LocalStorageService} from "../../local-storage.service";
+import {AuthControllerService} from "../../services/authController.service";
+import {LoginReq} from "../../model/loginReq";
 
 @Component({
   selector: 'app-login',
@@ -32,8 +34,9 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private formBuilder: FormBuilder,
-              private authService: AuthService,
-              private router: Router) {
+              private authService: AuthControllerService,
+              private router: Router,
+              private localStorage: LocalStorageService) {
   }
 
   ngOnInit() {
@@ -42,8 +45,10 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     if (this.loginForm.valid) {
       const {email, password} = this.loginForm.value;
-      this.authService.login(email, password).subscribe(data =>{
+      this.authService.login({ "email": email, "password": password}).subscribe(data =>{
         if (data){
+          this.localStorage.email = email;
+          this.localStorage.isUserLogin = true;
           this.router.navigate(['/homepage'])
         }else{
           this.correctCredentials = !this.correctCredentials;

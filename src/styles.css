@@ -12,3 +12,19 @@ body { margin: 0; font-family: Roboto, "Roboto", sans-serif;
   background-image: url("assets/FondoLargePage.svg");
   background-size: cover;
 }
+.bg-default-color{
+  background-color: #0F5A84FF;
+  font-family: Roboto, serif;
+  color: white;
+}
+.bg-button-color{
+  background-color: #286E9EFF;
+  font-family: Roboto, serif;
+  color: white;
+}
+.display-8{
+  font-size: calc(1rem + .5vw);
+  font-weight: 200;
+  line-height: 1.2;
+
+}

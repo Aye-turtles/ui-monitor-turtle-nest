@@ -1,0 +1,13 @@
+export * from './authController.service';
+import { AuthControllerService } from './authController.service';
+export * from './nestsController.service';
+import { NestsControllerService } from './nestsController.service';
+export * from './organizationsController.service';
+import { OrganizationsControllerService } from './organizationsController.service';
+export * from './recordsController.service';
+import { RecordsControllerService } from './recordsController.service';
+export * from './sensorsController.service';
+import { SensorsControllerService } from './sensorsController.service';
+export * from './userControllers.service';
+import { UserControllersService } from './userControllers.service';
+export const APIS = [AuthControllerService, NestsControllerService, OrganizationsControllerService, RecordsControllerService, SensorsControllerService, UserControllersService];
