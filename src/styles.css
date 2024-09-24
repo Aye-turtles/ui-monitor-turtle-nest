@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%;}
+body { margin: 0; font-family: Roboto, "Roboto", sans-serif;
+}
+.vertical-align {
+  vertical-align: baseline;
+}
+.bg-image{
+  width: 100%;
+  height: 100vh;
+  background-image: url("assets/FondoLargePage.svg");
+  background-size: cover;
+}

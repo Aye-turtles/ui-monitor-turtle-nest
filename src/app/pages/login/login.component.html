@@ -1,0 +1,39 @@
+<div class="container-fluid background">
+  <div class="row h-100 align-items-center justify-content-center position-relative">
+    <!-- LOGO -->
+    <div class="col-lg-6 col-md-6 col-sm-12 text-center py-5">
+      <img src="assets/Logo.svg" alt="Logo" class="img-fluid" style="max-height: 75vh;"  appearance="fill"/>
+    </div>
+    <!-- FORMULARIO DE LOGIN -->
+    <div class="col-lg-6 col-md-6 col-sm-12">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+        <div>
+          <mat-form-field class="w-100 mt-3" appearance="fill">
+
+            <input matInput class="form-control form-control-lg" type="text" placeholder="email" id="email" formControlName="email">
+            <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="alert alert-danger mt-2" role="alert">
+              <small *ngIf="loginForm.get('email')?.errors">Email es requerido.</small>
+            </div>
+          </mat-form-field>
+        </div>
+
+        <div>
+          <mat-form-field class="w-100" appearance="fill">
+            <input matInput class="form-control form-control-lg" type="password" placeholder="contraseña" id="password" formControlName="password">
+            <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="alert alert-danger mt-2" role="alert">
+              <small *ngIf="loginForm.get('password')?.errors">La contraseña es requerida.</small>
+            </div>
+          </mat-form-field>
+        </div>
+
+        <div *ngIf="!correctCredentials" class="alert alert-danger mt-2" role="alert">
+          <small>Credenciales incorrectas.</small>
+        </div>
+
+        <div>
+          <button mat-raised-button type="submit" [disabled]="loginForm.invalid" class="btn w-100 py-2 border-bottom">Iniciar Sesión</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
