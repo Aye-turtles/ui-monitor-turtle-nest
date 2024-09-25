@@ -29,6 +29,7 @@
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
+    "zingchart-angular": "^2.0.2",
     "zone.js": "~0.14.3"
   },
   "devDependencies": {

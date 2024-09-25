@@ -5,13 +5,3 @@
 .border-botton-homepage:hover{
   background: #5a8dd0;
 }
-
-.logo{
-{
-  transition: transform .7s ease-in-out;
-}
-}
-.logo:hover{
-  transform: rotate(360deg);
-:(
-}
