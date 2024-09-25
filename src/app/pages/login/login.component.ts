@@ -12,14 +12,17 @@ import {LoginReq} from "../../model/loginReq";
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule,
+  imports: [
+    CommonModule,
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
     NgOptimizedImage,
     MatFormField,
     MatLabel,
-    MatInput, MatButton],
+    MatInput,
+    MatButton
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
