@@ -22,9 +22,27 @@ body { margin: 0; font-family: Roboto, "Roboto", sans-serif;
   font-family: Roboto, serif;
   color: white;
 }
+.bg-button-color:hover{
+  background: #5a8dd0;
+}
+
 .display-8{
   font-size: calc(1rem + .5vw);
   font-weight: 200;
   line-height: 1.2;
 
+}
+.bg-default-color{
+  background-color: #286E9E;
+}
+.border-botton-homepage:hover{
+  background: #5a8dd0;
+}
+.bg-button-red{
+  background-color: #B22222;
+  font-family: Roboto, serif;
+  color: white;
+}
+.bg-button-red:hover{
+  background: #D94C4C;
 }

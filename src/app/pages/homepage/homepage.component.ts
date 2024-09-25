@@ -8,6 +8,7 @@ import {UserControllersService} from "../../services/userControllers.service";
 import {UserRes} from "../../model/userRes";
 import {NestsControllerService} from "../../nestsController.service";
 import {NestsRes} from "../../model/nestsRes";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-homepage',
@@ -18,7 +19,8 @@ import {NestsRes} from "../../model/nestsRes";
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    RouterLink
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'
@@ -37,6 +39,7 @@ export class HomepageComponent implements OnInit {
     this.userService.getUserByEmail({"email": this.storage.email, "password":""})
       .subscribe(data =>{
         this.user = data;
+        this.storage.currentUser = data;
       })
     this.nestController.getLastsNests().subscribe(data=>{
       this.latestNests = data;

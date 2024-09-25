@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <!-- Barra de navegación -->
+  <div class="row pt-3 pb-2 bg-default-color">
+    <div class="col-6">
+      <img ngSrc="assets/Logo.svg" height="40" width="40" class="img-thumbnail mx-2"
+           style="cursor: pointer" [routerLink]="['/homepage']">
+      <span class="h5">Usuarios</span>
+    </div>
+    <div class="col-6">
+      <span class="float-end" [routerLink]="['/usuarios/'+this.currentUser.id]">{{ this.currentUser.name }} {{ this.currentUser.lastName }}</span>
+    </div>
+  </div>
+
+
+  <!-- Formulario -->
+  <div class="row">
+    <div class="col-md-9 offset-md-2">
+      <button class="btn bg-button-red w-25 border-bottom-homepage my-4 shadow" (click)="goBack()">
+        <span>Regresar</span>
+      </button>
+      <button class="btn bg-button-color w-25 border-bottom-homepage mx-4 shadow" (click)="saveUser()">
+        <span>{{isCreateUser  ? 'Actualizar Usuario' : 'Guardar Usuario'}}</span>
+      </button>
+    </div>
+    <div class="col-md-9 offset-md-2">
+      <form [formGroup]="formGroup" (ngSubmit)="saveUser()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" class="form-control shadow" id="name" formControlName="name">
+          <div *ngIf="formGroup.get('name')?.invalid && formGroup.get('name')?.touched" class="text-danger">
+            El nombre es requerido.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="lastName" class="form-label">Apellido</label>
+          <input type="text" class="form-control shadow" id="lastName" formControlName="lastName">
+          <div *ngIf="formGroup.get('lastName')?.invalid && formGroup.get('lastName')?.touched" class="text-danger">
+            El apellido es requerido.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control shadow" id="email" formControlName="email">
+          <div *ngIf="formGroup.get('email')?.invalid && formGroup.get('email')?.touched" class="text-danger">
+            Email inválido o requerido.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="phone" class="form-label">Teléfono</label>
+          <input type="text" class="form-control shadow" id="phone" formControlName="phone">
+        </div>
+
+        <div class="mb-3">
+          <label for="title" class="form-label">Título</label>
+          <input type="text" class="form-control shadow" id="title" formControlName="title">
+        </div>
+
+        <div class="mb-3">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control shadow" id="password" formControlName="password">
+        </div>
+
+        <div class="mb-3">
+          <label for="tempPassword" class="form-label">Contraseña Temporal</label>
+          <input type="password" class="form-control shadow" id="tempPassword" formControlName="tempPassword">
+        </div>
+
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="isActive" formControlName="isActive">
+          <label class="form-check-label" for="isActive">Usuario Activo</label>
+        </div>
+
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="isAdministrator" formControlName="isAdministrator">
+          <label class="form-check-label" for="isAdministrator">Administrador</label>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
