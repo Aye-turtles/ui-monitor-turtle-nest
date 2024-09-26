@@ -9,6 +9,7 @@ import {UserRes} from "../../model/userRes";
 import {NestsControllerService} from "../../nestsController.service";
 import {NestsRes} from "../../model/nestsRes";
 import {RouterLink} from "@angular/router";
+import {DataRowOutlet} from "@angular/cdk/table";
 
 @Component({
   selector: 'app-homepage',
@@ -20,7 +21,8 @@ import {RouterLink} from "@angular/router";
     MatButtonModule,
     MatIconModule,
     NgOptimizedImage,
-    RouterLink
+    RouterLink,
+    DataRowOutlet
   ],
   templateUrl: './homepage.component.html',
   styleUrl: './homepage.component.css'

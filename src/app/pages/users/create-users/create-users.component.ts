@@ -105,17 +105,17 @@ export class CreateUsersComponent implements OnInit {
 
       if (this.isCreateUser) {
         this.userService.createUsers(this.formGroup.value).subscribe(response => {
-          console.log('Usuario guardado con éxito', response);
+          alert('Usuario guardado con éxito');
           this.goBack();
-        }, error => {
-          console.error('Error al guardar el usuario', error);
+          }, error => {
+          alert('Error al guardar el usuario: '+ error.message);
         });
       } else {
         this.userService.updateUsersByID(this.formGroup.value, Number(this.id)).subscribe(response => {
-          console.log('Usuario actualizado con éxito', response);
+          alert('Usuario actualizado con éxito');
           this.goBack();
         }, error => {
-          console.error('Error al actualizado el usuario', error);
+          alert('Error al actualizado el usuario:'+ error.message);
         });
       }
 

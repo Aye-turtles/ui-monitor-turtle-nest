@@ -1,0 +1,87 @@
+<div class="container-fluid">
+  <!-- Barra de navegación -->
+  <div class="row pt-3 pb-2 bg-default-color">
+    <div class="col-6">
+      <img ngSrc="assets/Logo.svg" height="40" width="40" class="img-thumbnail mx-2"
+           style="cursor: pointer" [routerLink]="['/homepage']">
+      <span class="h5">Organizaciones</span>
+    </div>
+    <div class="col-6">
+      <span class="float-end">{{ this.currentUser?.name }} {{ this.currentUser?.lastName }}</span>
+    </div>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="row">
+    <div class="col-md-9 offset-md-2">
+      <button class="btn bg-button-red w-25 border-bottom-homepage my-4 shadow" (click)="goBack()">
+        <span>Regresar</span>
+      </button>
+      <button class="btn bg-button-color w-25 border-bottom-homepage mx-4 shadow" (click)="saveOrg()">
+        <span>{{isCreateMode ? 'Crear Organización' : 'Actualizar Organización'}}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="row">
+    <div class="col-md-9 offset-md-2">
+      <form [formGroup]="formGroup" (ngSubmit)="saveOrg()">
+        <!-- Nombre de la Organización -->
+        <div class="mb-3">
+          <label for="name" class="form-label">Nombre de la Organización</label>
+          <input type="text" class="form-control shadow" id="name" formControlName="name">
+          <div *ngIf="formGroup.get('name')?.invalid && formGroup.get('name')?.touched" class="text-danger">
+            El nombre es requerido.
+          </div>
+        </div>
+
+        <!-- Contacto Principal -->
+        <div class="mb-3">
+          <label for="contact" class="form-label">Contacto Principal</label>
+          <select class="form-select shadow" id="contact" formControlName="contact">
+            <option *ngFor="let user of users" [value]="user.id">{{ user.name }} {{ user.lastName }} - {{user.email}}</option>
+          </select>
+          <div *ngIf="formGroup.get('contact')?.invalid && formGroup.get('contact')?.touched" class="text-danger">
+            El contacto es requerido.
+          </div>
+        </div>
+
+        <!-- Miembros de la Organización -->
+        <div class="mb-3">
+          <label class="form-label">Miembros de la Organización</label>
+          <div *ngFor="let user of users" class="form-check">
+            <input class="form-check-input shadow" type="checkbox" [value]="user.id" id="member-{{user.id}}"
+                   (change)="onMemberSelectionChange(user.id)">
+            <label class="form-check-label" for="member-{{user.id}}">
+              {{ user.name }} {{ user.lastName }}
+            </label>
+          </div>
+          <div *ngIf="formGroup.get('members')?.invalid && formGroup.get('members')?.touched" class="text-danger">
+            Seleccione al menos un miembro.
+          </div>
+        </div>
+
+        <!-- Fecha de Activación -->
+        <div class="mb-3">
+          <label for="dateActive" class="form-label">Fecha de Activación</label>
+          <input type="date" class="form-control shadow" id="dateActive" formControlName="dateActive">
+        </div>
+
+        <!-- Fecha de Inactivación -->
+        <div class="mb-3">
+          <label for="dateInactive" class="form-label">Fecha de Inactivación</label>
+          <input type="date" class="form-control shadow" id="dateInactive" formControlName="dateInactive">
+        </div>
+
+        <!-- Organización Activa -->
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="isActive" formControlName="isActive">
+          <label class="form-check-label" for="isActive">Organización Activa</label>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">Guardar</button>
+      </form>
+    </div>
+  </div>
+</div>

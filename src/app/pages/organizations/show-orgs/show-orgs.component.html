@@ -1,0 +1,53 @@
+<div class="container-fluid">
+
+  <!-- Encabezado con logo y nombre de la sección -->
+  <div class="row pt-3 pb-2 bg-default-color">
+    <div class="col-6">
+      <img ngSrc="assets/Logo.svg" height="40" width="40" class="img-thumbnail mx-2"
+           style="cursor: pointer" [routerLink]="['/homepage']">
+      <span class="h5">Organizaciones</span>
+    </div>
+    <div class="col-6">
+      <span class="float-end link-info">{{ this.currentUser.name }} {{ this.currentUser.lastName }}</span>
+    </div>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="row">
+    <div class="col py-2">
+      <button class="btn bg-button-red w-25 h-75 border-botton-homepage m-2 shadow" (click)="goBack()">
+        <span>Regresar</span>
+      </button>
+      <button class="btn bg-button-color w-25 h-75 border-botton-homepage shadow" [routerLink]="['crear']">
+        <span>Crear Organización</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Listado de organizaciones -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let org of organizations">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">{{ org.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            Activa: {{ org.dateActive | date:'shortDate' }}
+            <span *ngIf="org.dateInactive"> - Inactiva: {{ org.dateInactive | date:'shortDate' }}</span>
+          </h6>
+          <p class="card-text">Contacto: {{ org.contact?.name }} {{ org.contact?.lastName }}</p>
+          <p class="card-text">Miembros: {{ org.members?.length }}</p>
+          <p class="card-text">Estado: {{ org.isActive ? 'Activa' : 'Inactiva' }}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn bg-button-red w-25 border-botton-homepage m-2 shadow" (click)="deleteOrg(org)">
+            Eliminar
+          </button>
+          <button class="btn bg-button-color w-25 border-botton-homepage m-2 shadow" [routerLink]="[org.id]">
+            Editar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

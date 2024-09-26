@@ -7,6 +7,8 @@ import {CreateNestComponent} from "./pages/nests/create-nest/create-nest.compone
 import {NestInfoComponent} from "./pages/nests/nest-info/nest-info.component";
 import {ShowUsersComponent} from "./pages/users/show-users/show-users.component";
 import {CreateUsersComponent} from "./pages/users/create-users/create-users.component";
+import {ShowOrgsComponent} from "./pages/organizations/show-orgs/show-orgs.component";
+import {CreateOrgsComponent} from "./pages/organizations/create-orgs/create-orgs.component";
 
 export const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -18,6 +20,13 @@ export const routes: Routes = [
       {path: 'crear', component: CreateNestComponent, pathMatch: 'full'},
       {path: ':id', component: CreateNestComponent},
       {path: 'info/:id', component: NestInfoComponent}
+    ]
+  },
+  {
+    path: 'org', children:[
+      {path: '', component: ShowOrgsComponent},
+      {path: ':id', component: CreateOrgsComponent},
+      {path: 'crear', component: CreateOrgsComponent}
     ]
   },
   {
