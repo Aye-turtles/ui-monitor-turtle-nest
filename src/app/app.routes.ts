@@ -9,6 +9,8 @@ import {ShowUsersComponent} from "./pages/users/show-users/show-users.component"
 import {CreateUsersComponent} from "./pages/users/create-users/create-users.component";
 import {ShowOrgsComponent} from "./pages/organizations/show-orgs/show-orgs.component";
 import {CreateOrgsComponent} from "./pages/organizations/create-orgs/create-orgs.component";
+import {ShowSensorsComponent} from "./pages/sensors/show-sensors/show-sensors.component";
+import {CreateSensorsComponent} from "./pages/sensors/create-sensors/create-sensors.component";
 
 export const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -35,7 +37,15 @@ export const routes: Routes = [
       {path: ':id', component: CreateUsersComponent},
       {path: 'crear', component: CreateUsersComponent}
     ]
+  },
+  {
+    path: 'sensores', children:[
+      {path: '', component: ShowSensorsComponent},
+      {path: ':id', component: CreateSensorsComponent},
+      {path: 'crear', component: CreateSensorsComponent}
+    ]
   }
+
 
 
 ];

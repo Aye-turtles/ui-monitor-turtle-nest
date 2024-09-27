@@ -18,7 +18,7 @@
       <button class="btn bg-button-red w-25 h-75 border-botton-homepage m-2 shadow" (click)="goBack()">
         <span>Regresar</span>
       </button>
-      <button class="btn bg-button-color w-25 h-75 border-botton-homepage shadow" [routerLink]="['crear']">
+      <button class="btn bg-button-color w-25 h-75 border-botton-homepage shadow" routerLink="/sensores/crear">
         <span>Crear Organización</span>
       </button>
     </div>
@@ -39,9 +39,6 @@
           <p class="card-text">Estado: {{ org.isActive ? 'Activa' : 'Inactiva' }}</p>
         </div>
         <div class="card-footer">
-          <button class="btn bg-button-red w-25 border-botton-homepage m-2 shadow" (click)="deleteOrg(org)">
-            Eliminar
-          </button>
           <button class="btn bg-button-color w-25 border-botton-homepage m-2 shadow" [routerLink]="[org.id]">
             Editar
           </button>
