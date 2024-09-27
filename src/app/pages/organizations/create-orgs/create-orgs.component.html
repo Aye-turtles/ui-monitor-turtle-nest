@@ -52,7 +52,8 @@
           <label class="form-label">Miembros de la Organización</label>
           <div *ngFor="let user of users" class="form-check">
             <input class="form-check-input shadow" type="checkbox" [value]="user.id" id="member-{{user.id}}"
-                   (change)="onMemberSelectionChange(user.id)">
+                   (change)="onMemberSelectionChange($event, user.id)"
+                   [checked]="isUserSelected(user.id)">
             <label class="form-check-label" for="member-{{user.id}}">
               {{ user.name }} {{ user.lastName }}
             </label>
@@ -79,8 +80,6 @@
           <input type="checkbox" class="form-check-input" id="isActive" formControlName="isActive">
           <label class="form-check-label" for="isActive">Organización Activa</label>
         </div>
-
-        <button type="submit" class="btn btn-primary w-100">Guardar</button>
       </form>
     </div>
   </div>

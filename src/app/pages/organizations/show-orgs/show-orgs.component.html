@@ -31,8 +31,8 @@
         <div class="card-body">
           <h5 class="card-title">{{ org.name }}</h5>
           <h6 class="card-subtitle mb-2 text-muted">
-            Activa: {{ org.dateActive | date:'shortDate' }}
-            <span *ngIf="org.dateInactive"> - Inactiva: {{ org.dateInactive | date:'shortDate' }}</span>
+            Inicio de operaciones: {{ org.dateActive | date:'shortDate' }}
+            <span *ngIf="org.dateInactive"> - Fin  de operaciones: {{ org.dateInactive | date:'shortDate' }}</span>
           </h6>
           <p class="card-text">Contacto: {{ org.contact?.name }} {{ org.contact?.lastName }}</p>
           <p class="card-text">Miembros: {{ org.members?.length }}</p>
