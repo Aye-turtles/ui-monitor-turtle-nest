@@ -1,0 +1,108 @@
+<div class="container-fluid">
+  <!-- Barra de navegación -->
+  <div class="row pt-3 pb-2 bg-default-color">
+    <div class="col-6">
+      <img ngSrc="assets/Logo.svg" height="40" width="40" class="img-thumbnail mx-2"
+           style="cursor: pointer" [routerLink]="['/homepage']">
+      <span class="h5">Sensores</span>
+    </div>
+    <div class="col-6">
+      <span class="float-end">{{ this.currentUser?.name }} {{ this.currentUser?.lastName }}</span>
+    </div>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="row">
+    <div class="col-md-9 offset-md-2">
+      <button class="btn bg-button-red w-25 border-bottom-homepage my-4 shadow" (click)="goBack()">
+        <span>Regresar</span>
+      </button>
+      <button class="btn bg-button-color w-25 border-bottom-homepage mx-4 shadow" (click)="saveSensor()">
+        <span>{{isCreateMode ? 'Crear Sensor' : 'Actualizar Sensor'}}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="row">
+    <div class="col-md-9 offset-md-2">
+      <form [formGroup]="formGroup" (ngSubmit)="saveSensor()">
+        <div class="mb-3">
+          <label for="assignedID" class="form-label">ID Asignado</label>
+          <input type="text" class="form-control shadow" id="assignedID" formControlName="assignedID">
+          <div *ngIf="formGroup.get('assignedID')?.invalid && formGroup.get('assignedID')?.touched" class="text-danger">
+            El ID asignado es requerido.
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="softwareVersion" class="form-label">Versión de Software</label>
+          <input type="text" class="form-control shadow" id="softwareVersion" formControlName="softwareVersion">
+        </div>
+
+        <div class="mb-3">
+          <label for="hardwareVersion" class="form-label">Versión de Hardware</label>
+          <input type="text" class="form-control shadow" id="hardwareVersion" formControlName="hardwareVersion">
+        </div>
+
+        <div class="mb-3">
+          <label for="components" class="form-label">Componentes</label>
+          <input type="text" class="form-control shadow" id="components" formControlName="components">
+        </div>
+
+        <div class="mb-3">
+          <label for="temperatureError" class="form-label">Error de Temperatura</label>
+          <input type="number" class="form-control shadow" id="temperatureError" formControlName="temperatureError">
+        </div>
+
+        <div class="mb-3">
+          <label for="moistureMinError" class="form-label">Error Mínimo de Humedad</label>
+          <input type="number" class="form-control shadow" id="moistureMinError" formControlName="moistureMinError">
+        </div>
+
+        <div class="mb-3">
+          <label for="moistureMaxError" class="form-label">Error Máximo de Humedad</label>
+          <input type="number" class="form-control shadow" id="moistureMaxError" formControlName="moistureMaxError">
+        </div>
+
+        <div class="mb-3">
+          <label for="xerror" class="form-label">Error en Eje X</label>
+          <input type="number" class="form-control shadow" id="xerror" formControlName="xerror">
+        </div>
+
+        <div class="mb-3">
+          <label for="yerror" class="form-label">Error en Eje Y</label>
+          <input type="number" class="form-control shadow" id="yerror" formControlName="yerror">
+        </div>
+
+        <div class="mb-3">
+          <label for="zerror" class="form-label">Error en Eje Z</label>
+          <input type="number" class="form-control shadow" id="zerror" formControlName="zerror">
+        </div>
+
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="isInUse" formControlName="isInUse">
+          <label class="form-check-label" for="isInUse">En Uso</label>
+        </div>
+
+        <div class="mb-3">
+          <label for="dateManufactured" class="form-label">Fecha de Fabricación</label>
+          <input type="date" class="form-control shadow" id="dateManufactured" formControlName="dateManufactured">
+        </div>
+
+        <div class="mb-3">
+          <label for="organization" class="form-label">Organización</label>
+          <select class="form-select shadow" id="organization" formControlName="organization">
+            <option *ngFor="let org of organizations" [value]="org.id">{{ org.name }}</option>
+          </select>
+        </div>
+
+        <div class="mb-3">
+          <label for="timing" class="form-label">Cada cuantos segundos realizara registro</label>
+          <input type="number" class="form-control shadow" id="timing" formControlName="timing">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

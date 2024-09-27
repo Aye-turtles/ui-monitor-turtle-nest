@@ -1,0 +1,44 @@
+<div class="container-fluid">
+
+  <!-- Encabezado con logo y nombre de la sección -->
+  <div class="row pt-3 pb-2 bg-default-color">
+    <div class="col-6">
+      <img ngSrc="assets/Logo.svg" height="40" width="40" class="img-thumbnail mx-2"
+           style="cursor: pointer" [routerLink]="['/homepage']" alt="logo" priority>
+      <span class="h5">Organizaciones</span>
+    </div>
+    <div class="col-6">
+      <span class="float-end link-info">{{ this.currentUser.name }} {{ this.currentUser.lastName }}</span>
+    </div>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="row">
+    <div class="col py-2">
+      <button class="btn bg-button-red w-25 h-75 border-botton-homepage m-2 shadow" (click)="goBack()">
+        <span>Regresar</span>
+      </button>
+      <button class="btn bg-button-color w-25 h-75 border-botton-homepage shadow" [routerLink]="['crear']">
+        <span>Crear nuevo Sensor</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let sensor of sensors">
+      <div class="card h-100 shadow">
+        <div class="card-body">
+          <h5 class="card-title">ID: {{ sensor.assignedID }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">Organización: {{ sensor.organization?.name }}</h6>
+          <p class="card-text">Versión de Software: {{ sensor.softwareVersion }}</p>
+          <p class="card-text">Versión de Hardware: {{ sensor.hardwareVersion }}</p>
+          <p class="card-text">En Uso: {{ sensor.isInUse ? 'Sí' : 'No' }}</p>
+          <p class="card-text">Fecha de Fabricación: {{ sensor.dateManufactured | date:'dd/MM/yyyy' }}</p>
+        </div>
+        <div class="card-footer">
+          <button class="btn bg-button-color w-25 border-bottom-homepage m-2 shadow" [routerLink]="[sensor.id]">Editar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
