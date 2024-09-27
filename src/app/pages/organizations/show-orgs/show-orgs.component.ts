@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CommonModule, Location} from '@angular/common';
+import {CommonModule, Location, NgOptimizedImage} from '@angular/common';
 import { OrganizationsRes } from '../../../model/organizationsRes';
 import { LocalStorageService } from '../../../local-storage.service';
 import {OrganizationsControllerService} from "../../../services/organizationsController.service";
@@ -10,7 +10,8 @@ import {RouterLink} from "@angular/router";
   standalone: true,
   imports: [
     CommonModule,
-    RouterLink
+    RouterLink,
+    NgOptimizedImage
   ],
   templateUrl: './show-orgs.component.html',
   styleUrls: ['./show-orgs.component.css']

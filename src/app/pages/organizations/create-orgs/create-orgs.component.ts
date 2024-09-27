@@ -17,8 +17,6 @@ import {MatButton} from "@angular/material/button";
 import {UserControllersService} from "../../../services/userControllers.service";
 import {OrganizationsReq} from "../../../model/organizationsReq";
 import {UserRes} from "../../../model/userRes";
-import {UserReq} from "../../../model/userReq";
-import {error} from "@angular/compiler-cli/src/transformers/util";
 
 @Component({
   selector: 'app-create-orgs',
@@ -43,16 +41,18 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 export class CreateOrgsComponent {
 
 
-  protected  isCreateMode: boolean;
+  protected isCreateMode: boolean;
   protected orgReq: OrganizationsReq = {}
   protected orgRes: OrganizationsRes = {}
-  protected users: [UserRes]
-  protected  currentUser: UserRes;
+  protected users: UserRes[]
+  protected currentUser: UserRes;
   protected id: string;
+  protected email: string = '';
+
 
   formGroup = new FormGroup({
     name: new FormControl(this.orgReq.name, [Validators.required]),
-    contact: new FormControl(this.orgReq.contact.email, [Validators.required]),
+    contact: new FormControl(this.email, [Validators.required]),
     dateActive: new FormControl(this.orgReq.dateActive),
     dateInactive: new FormControl(this.orgReq.dateInactive),
     isActive: new FormControl(this.orgReq.isActive)
@@ -72,20 +72,11 @@ export class CreateOrgsComponent {
     this.currentUser = this.storage.currentUser
     this.activeRoute.paramMap.subscribe(params => {
       this.id = params.get('id');
-      this.isCreateMode = !params.has('id');
-    });
-    if (!this.isCreateMode) {
-      this.orgService.getOrgByID(Number(this.id)).subscribe(data => {
-        this.orgRes = data;
-        this.orgReq.id = this.orgRes.id;
-        this.orgReq.name = this.orgRes.name;
-        this.orgReq.contact = this.orgRes.contact;
-        this.orgReq.dateActive = this.orgRes.dateActive;
-        this.orgReq.dateInactive = this.orgRes.dateInactive;
-        this.orgReq.isActive = this.orgRes.isActive;
-        this.orgReq.members = this.orgRes.members;
+      this.isCreateMode = params.has('id');
+      this.userService.getAllUsers().subscribe(data =>{
+        this.users = data
       })
-    }
+    });
   }
 
   private getOrganizationById(id: number) {
