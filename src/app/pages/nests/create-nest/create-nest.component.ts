@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CommonModule, Location} from "@angular/common";
+import {CommonModule, Location, NgOptimizedImage} from "@angular/common";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {MatButton} from "@angular/material/button";
@@ -13,6 +13,7 @@ import {SensorsControllerService} from "../../../services/sensorsController.serv
 import {OrganizationsControllerService} from "../../../services/organizationsController.service";
 import {NestsControllerService} from "../../../services/nestsController.service";
 import {LocalStorageService} from "../../../local-storage.service";
+import {FileComponent} from "../info/file/file.component";
 
 @Component({
   selector: 'app-create-nest',
@@ -25,7 +26,9 @@ import {LocalStorageService} from "../../../local-storage.service";
     MatCardContent,
     MatCardTitle,
     MatButton,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileComponent,
+    NgOptimizedImage
   ],
   templateUrl: './create-nest.component.html',
   styleUrl: './create-nest.component.scss'

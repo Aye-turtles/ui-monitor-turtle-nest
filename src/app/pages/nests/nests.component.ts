@@ -7,8 +7,17 @@ import {LocalStorageService} from "../../local-storage.service";
 import {NestsRes} from "../../model/nestsRes";
 
 import * as PlotlyJS from 'plotly.js-dist-min';
-import { PlotlyModule } from 'angular-plotly.js';
+import {PlotlyModule} from 'angular-plotly.js';
 import {NestsControllerService} from "../../services/nestsController.service";
+import {
+  MatCard,
+  MatCardActions,
+  MatCardContent,
+  MatCardHeader,
+  MatCardImage, MatCardSubtitle,
+  MatCardTitle
+} from "@angular/material/card";
+import {MatButton} from "@angular/material/button";
 
 PlotlyModule.plotlyjs = PlotlyJS;
 
@@ -20,7 +29,15 @@ PlotlyModule.plotlyjs = PlotlyJS;
     CommonModule,
     NgOptimizedImage,
     RouterLink,
-    PlotlyModule
+    PlotlyModule,
+    MatCard,
+    MatCardHeader,
+    MatCardImage,
+    MatCardContent,
+    MatCardActions,
+    MatButton,
+    MatCardTitle,
+    MatCardSubtitle
   ],
   templateUrl: './nests.component.html',
   styleUrl: './nests.component.scss'
@@ -37,7 +54,7 @@ export class NestsComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.storage.currentUser;
-    this.nestService.getAllNests().subscribe(data =>{
+    this.nestService.getAllNests().subscribe(data => {
       if (data) {
         this.nestList = data
       }
@@ -50,14 +67,14 @@ export class NestsComponent implements OnInit {
 
   constructData(nest: NestsRes) {
     return [{
-      type:'scattermap',
-      lat:[nest.latitude],
-      lon:[nest.longitude],
-      mode:'markers',
+      type: 'scattermap',
+      lat: [nest.latitude],
+      lon: [nest.longitude],
+      mode: 'markers',
       marker: {
-        size:10
+        size: 10
       },
-      text:['Montreal']
+      text: ['Montreal']
     }];
   }
 }

@@ -25,11 +25,15 @@ body { margin: 0; font-family: Roboto, "Roboto", sans-serif;
   background: #5a8dd0;
 }
 
+.display-7{
+  font-size: calc(1rem + .75vw);
+  font-weight: 200;
+  line-height: 1.2;
+}
 .display-8{
   font-size: calc(1rem + .5vw);
   font-weight: 200;
   line-height: 1.2;
-
 }
 .bg-default-color{
   background-color: #286E9E;

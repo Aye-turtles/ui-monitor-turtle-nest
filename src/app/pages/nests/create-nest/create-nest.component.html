@@ -26,6 +26,8 @@
   <!-- Formulario -->
   <div class="row">
     <div class="col-md-9 offset-md-2">
+      <app-file></app-file>
+
       <form [formGroup]="formGroup" (ngSubmit)="saveNest()">
 
         <!-- Identificador del Nido -->
@@ -112,7 +114,7 @@
         </div>
         <!-- Cantidad de infertiles -->
         <div class="mb-3">
-          <label for="infertileEggs" class="form-label">Cantidad depredados</label>
+          <label for="infertileEggs" class="form-label">Cantidad infertiles</label>
           <input type="number" class="form-control shadow" id="infertileEggs" formControlName="infertileEggs">
         </div>
         <!-- Zona -->
@@ -144,12 +146,12 @@
         </div>
 
         <div class="mb-3">
-          <label for="firstHatchingRecordedDate" class="form-label">Fecha de Fin de Monitoreo</label>
+          <label for="firstHatchingRecordedDate" class="form-label">Fecha de primer eclosion</label>
           <input type="date" class="form-control shadow" id="firstHatchingRecordedDate" formControlName="firstHatchingRecordedDate">
         </div>
 
         <div class="mb-3">
-          <label for="nestCleaningDate" class="form-label">Fecha de Fin de Monitoreo</label>
+          <label for="nestCleaningDate" class="form-label">Fecha de limpiado de nido</label>
           <input type="date" class="form-control shadow" id="nestCleaningDate" formControlName="nestCleaningDate">
         </div>
 

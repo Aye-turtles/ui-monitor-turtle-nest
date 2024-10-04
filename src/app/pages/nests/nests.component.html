@@ -26,35 +26,28 @@
 
   <!-- Listado de organizaciones -->
   <div class="row">
-    <div class="col-md-4 mb-4" *ngFor="let nest of nestList">
-      <div class="card h-100 shadow" [ngClass]="{disabled: !nest.isActive}">
-        <div class="card-body">
-
-          <div class="row">
-            <div class="col border-bottom mb-2">
-              <h5 class="card-title">{{ nest.assignedID }}</h5>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col">
-              <h6 class="card-subtitle mb-2 text-muted">
-                Org: {{ nest.organization.name }}
-              </h6>
-              <p class="card-text">Sensor: {{ nest.sensor.assignedID }}</p>
-              <p class="card-text">Estado: {{ nest.isActive ? 'Activa' : 'Inactiva' }}</p>
-            </div>
-          </div>
-          <plotly-plot [data]="[{
+    <div class="col-md-3 mb-4" *ngFor="let nest of nestList">
+      <mat-card class="example-card" appearance="outlined">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>{{ nest?.assignedID }}</mat-card-title>
+          <mat-card-subtitle>Estado {{ nest?.isActive ? "Activo" : "Inactivo" }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+        <p class="h6">Sensor asignado:{{nest?.sensor?.assignedID}}</p>
+          <div class="border-top mt-1 pt-2">
+            <span class="h6">locación</span>
+            <plotly-plot [data]="[{
               type:'scattermap',
               lat:[nest.latitude],
               lon:[nest.longitude],
               mode:'markers',
               marker: {
-                        size:10
+                        size:12
                       },
               text:[nest.assignedID]
               }]"
-              [layout]="{
+                         [layout]="{
               autosize: true,
               hovermode:'closest',
               map: {
@@ -64,24 +57,23 @@
                   lon:nest.longitude
                 },
                 pitch:0,
-                zoom:12
+                zoom:12,
               },
-              }"
-            [useResizeHandler]="true">
-
-          </plotly-plot>
-
-        </div>
-        <div class="card-footer">
-          <button class="btn bg-button-color w-25 border-botton-homepage m-2 shadow" [routerLink]="[nest.id]">
+              	margin: { r: 0, t: 0, b: 0, l: 0 }
+              }" [useResizeHandler]="true">
+            </plotly-plot>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button class="btn bg-button-color w-25 border-botton-homepage m-2 shadow" mat-button
+                  [routerLink]="[nest.id]">
             Editar
           </button>
-          <button class="btn bg-info w-25 border-botton-homepage m-2 shadow" [routerLink]="'info/'+[nest.id]">
+          <button class="btn w-25 border-botton-homepage m-2 shadow" mat-button [routerLink]="'info/'+[nest.id]">
             Info
           </button>
-        </div>
-
-      </div>
+        </mat-card-actions>
+      </mat-card>
     </div>
   </div>
 
