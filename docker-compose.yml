@@ -17,7 +17,7 @@ services:
       context: ./bufi-file-managment  # Ruta donde está el Dockerfile del backend
       dockerfile: Dockerfile  # Usar el Dockerfile en bufi-file-managment
     ports:
-      - "3000:3000"  # Mapea el puerto 3000 del contenedor al puerto 3000 del host
+      - "3001:3000"  # Cambia 3000:3000 a 3001:3000
     networks:
       - app-network
 

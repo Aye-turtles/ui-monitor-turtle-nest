@@ -6,8 +6,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class FileService {
-  private uploadUrl = 'http://localhost:3000/upload-file';  // URL para subir archivos
-  private getUrl = 'http://localhost:3000/get-file';  // URL base para consultar archivos
+  private uploadUrl = 'http://localhost:3001/upload-file';  // URL para subir archivos
+  private getUrl = 'http://localhost:3001/get-file';  // URL base para consultar archivos
 
   constructor(private http: HttpClient) {}
 
