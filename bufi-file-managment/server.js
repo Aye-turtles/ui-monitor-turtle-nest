@@ -24,7 +24,7 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage });
 
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = '';
 const repoOwner = 'Aye-turtles';  // Nombre de la organización
 const repoName = 'records';  // Nombre del repositorio
 const branch = 'main';  // Rama del repositorio
