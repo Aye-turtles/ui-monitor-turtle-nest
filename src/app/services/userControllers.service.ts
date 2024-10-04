@@ -31,7 +31,7 @@ import { Configuration }                                     from '../configurat
 })
 export class UserControllersService {
 
-    protected basePath = 'http://localhost:8089/dbp';
+    protected basePath = 'http://norsucio.com:8090/dbp';
     public defaultHeaders = new HttpHeaders();
     public configuration = new Configuration();
 

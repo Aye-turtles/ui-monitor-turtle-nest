@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiURL: 'http://localhost:8089/dbp',
+  apiURL: 'http://norsucio.com:8090/dbp',
 };

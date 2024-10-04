@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  frontend:
+    build:
+      context: ./bufi-file-managment  # Ruta donde está el Dockerfile del frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"  # Mapea el puerto 80 del contenedor al puerto 80 del host
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: ./  # Ruta donde está el Dockerfile del backend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"  # Mapea el puerto 3000 del contenedor al puerto 3000 del host
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

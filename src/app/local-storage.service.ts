@@ -16,7 +16,7 @@ export class LocalStorageService {
     title: "undefined"
   };
 
-  private ApiUrl = 'http://localhost:8089/dbp'; // TEST URL
+  private ApiUrl = 'http://norsucio.com:8090/dbp'; // TEST URL
   //private ApiUrl = 'http://norsucio.com:8089/dbp'; // PROD URL
 
   get currentUser(): UserRes {

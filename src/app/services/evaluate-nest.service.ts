@@ -6,7 +6,7 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class EvaluateNestService {
-  private apiUrl = 'http://localhost:8000/evaluate-behavior';
+  private apiUrl = 'http://norsucio.com:8000/evaluate-behavior';
 
   constructor(private http: HttpClient) {}
 
