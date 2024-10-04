@@ -28,7 +28,7 @@ import {LocalStorageService} from "../../../local-storage.service";
     ReactiveFormsModule
   ],
   templateUrl: './create-nest.component.html',
-  styleUrl: './create-nest.component.css'
+  styleUrl: './create-nest.component.scss'
 })
 export class CreateNestComponent implements OnInit {
   protected currentUser: any;

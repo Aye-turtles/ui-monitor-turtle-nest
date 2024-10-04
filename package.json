@@ -30,6 +30,7 @@
     "express": "^4.18.2",
     "plotly.js-dist-min": "^2.35.2",
     "rxjs": "~7.8.0",
+    "schematics-scss-migrate": "^2.3.17",
     "tslib": "^2.3.0",
     "zingchart-angular": "^2.0.2",
     "zone.js": "~0.14.3"

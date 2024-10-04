@@ -38,7 +38,7 @@ import {UserReq} from "../../../model/userReq";
     ReactiveFormsModule
   ],
   templateUrl: './create-orgs.component.html',
-  styleUrl: './create-orgs.component.css'
+  styleUrl: './create-orgs.component.scss'
 })
 export class CreateOrgsComponent implements OnInit{
   protected isCreateMode: boolean;

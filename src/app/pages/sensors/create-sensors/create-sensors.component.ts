@@ -27,7 +27,7 @@ import {MatButton} from "@angular/material/button";
     RouterLink
   ],
   templateUrl: './create-sensors.component.html',
-  styleUrl: './create-sensors.component.css'
+  styleUrl: './create-sensors.component.scss'
 })
 export class CreateSensorsComponent implements OnInit {
   protected currentUser: any;

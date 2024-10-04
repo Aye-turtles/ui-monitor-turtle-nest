@@ -1,0 +1,28 @@
+/* Asegura que el mat-tab-group y los mat-tabs mantengan su espaciado adecuado */
+mat-tab-group {
+  margin-top: 20px;
+}
+
+/* Estilos específicos para mejorar la visualización cuando Bootstrap está presente */
+mat-tab-label {
+  padding: 12px 24px; /* Ajusta el espaciado dentro de cada tab */
+}
+
+/* Elimina la línea gruesa negra y mejora la apariencia visual */
+mat-tab-label-active {
+  border-bottom: 2px solid #3f51b5 !important; /* Cambia el color si lo deseas */
+}
+
+/* Ajustes para evitar que las tabs se vean pegadas */
+mat-tab-header {
+  border-bottom: none; /* Elimina la posible línea gruesa */
+  padding-bottom: 12px; /* Ajusta el espacio entre las tabs */
+}
+
+/* Aumenta la separación entre las tabs y su contenido */
+.example-small-box,
+.example-large-box {
+  padding: 16px;
+  background-color: #f5f5f5;
+  margin-top: 16px;
+}

@@ -26,7 +26,7 @@ import {MatButton} from "@angular/material/button";
     RouterLink
   ],
   templateUrl: './create-users.component.html',
-  styleUrl: './create-users.component.css'
+  styleUrl: './create-users.component.scss'
 })
 export class CreateUsersComponent implements OnInit {
 

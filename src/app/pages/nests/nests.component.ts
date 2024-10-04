@@ -23,7 +23,7 @@ PlotlyModule.plotlyjs = PlotlyJS;
     PlotlyModule
   ],
   templateUrl: './nests.component.html',
-  styleUrl: './nests.component.css'
+  styleUrl: './nests.component.scss'
 })
 export class NestsComponent implements OnInit {
   protected currentUser: any;

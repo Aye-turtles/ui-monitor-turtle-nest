@@ -31,7 +31,7 @@ import {MatButton} from "@angular/material/button";
     MatButton
   ],
   templateUrl: './show-sensors.component.html',
-  styleUrl: './show-sensors.component.css'
+  styleUrl: './show-sensors.component.scss'
 })
 export class ShowSensorsComponent implements OnInit {
   protected currentUser: any;

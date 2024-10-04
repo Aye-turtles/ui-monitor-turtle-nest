@@ -14,7 +14,7 @@ import {RouterLink} from "@angular/router";
     NgOptimizedImage
   ],
   templateUrl: './show-orgs.component.html',
-  styleUrls: ['./show-orgs.component.css']
+  styleUrls: ['./show-orgs.component.scss']
 })
 export class ShowOrgsComponent implements OnInit {
   protected currentUser: any;

@@ -1,1 +1,37 @@
-<p>nest-info works!</p>
+<div class="container-fluid">
+
+  <!-- Encabezado con logo y nombre de la sección -->
+  <div class="row pt-3 pb-2 bg-default-color">
+    <div class="col-6">
+      <img ngSrc="assets/Logo.svg" height="40" width="40" class="img-thumbnail mx-2"
+           style="cursor: pointer" [routerLink]="['/homepage']" alt="logo">
+      <span class="h5">Nido {{"- " + nest?.assignedID}}</span>
+    </div>
+    <div class="col-6">
+      <span class="float-end link-info">{{ this.currentUser.name }} {{ this.currentUser.lastName }}</span>
+    </div>
+  </div>
+  <div class="row mt-3 border-bottom">
+    <div class="offset-2 col-8">
+      <span class="h3">Identificador de registros: {{nest?.assignedID}}-{{nest?.sensor?.assignedID}}</span>
+    </div>
+  </div>
+  <mat-tab-group dynamicHeight>
+    <mat-tab label="Short tab">
+      <div class="example-small-box mat-elevation-z4">
+        Small content
+      </div>
+    </mat-tab>
+    <mat-tab label="Long tab">
+      <div class="example-large-box mat-elevation-z4">
+        Large content
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+  <div class="row">
+    <div class="offset-2 col-8">
+
+    </div>
+  </div>
+
+</div>

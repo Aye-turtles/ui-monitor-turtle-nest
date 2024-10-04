@@ -25,7 +25,7 @@ import {NestsControllerService} from "../../services/nestsController.service";
     DataRowOutlet
   ],
   templateUrl: './homepage.component.html',
-  styleUrl: './homepage.component.css'
+  styleUrl: './homepage.component.scss'
 })
 export class HomepageComponent implements OnInit {
 
