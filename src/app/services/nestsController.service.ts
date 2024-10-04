@@ -249,7 +249,7 @@ export class NestsControllerService {
         const consumes: string[] = [
         ];
 
-        return this.httpClient.request<NestsRes>('get',`${this.basePath}/nest/${encodeURIComponent(String(assignedID))}`,
+        return this.httpClient.request<NestsRes>('get',`${this.basePath}/nest/assigned${encodeURIComponent(String(assignedID))}`,
             {
                 withCredentials: this.configuration.withCredentials,
                 headers: headers,

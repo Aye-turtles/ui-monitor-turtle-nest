@@ -108,7 +108,6 @@ export class CreateSensorsComponent implements OnInit {
   saveSensor() {
     if (this.formGroup.valid) {
       this.fillSensorReq();
-      alert(this.sensorReq.nrSumar)
       if (this.isCreateMode) {
         this.sensorService.createSensor(this.sensorReq).subscribe(data => {
           alert('Sensor creado con éxito');

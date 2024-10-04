@@ -1,3 +1,5 @@
+<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+
 <div class="container-fluid">
 
   <!-- Encabezado con logo y nombre de la sección -->
@@ -21,6 +23,67 @@
       <button class="btn bg-button-color w-25 h-75 border-botton-homepage shadow" routerLink="/nidos/crear">
         <span>Crear Nido</span>
       </button>
+    </div>
+  </div>
+
+  <!-- Listado de organizaciones -->
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let nest of nestList">
+      <div class="card h-100 shadow" [ngClass]="{disabled: !nest.isActive}">
+        <div class="card-body">
+
+          <div class="row">
+            <div class="col border-bottom mb-2">
+              <h5 class="card-title">{{ nest.assignedID }}</h5>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <h6 class="card-subtitle mb-2 text-muted">
+                Org: {{ nest.organization.name }}
+              </h6>
+              <p class="card-text">Sensor: {{ nest.sensor.assignedID }}</p>
+              <p class="card-text">Estado: {{ nest.isActive ? 'Activa' : 'Inactiva' }}</p>
+            </div>
+          </div>
+          <plotly-plot [data]="[{
+              type:'scattermap',
+              lat:[nest.latitude],
+              lon:[nest.longitude],
+              mode:'markers',
+              marker: {
+                        size:10
+                      },
+              text:[nest.assignedID]
+              }]"
+              [layout]="{
+              autosize: true,
+              hovermode:'closest',
+              map: {
+                bearing:0,
+                center: {
+                  lat:nest.latitude,
+                  lon:nest.longitude
+                },
+                pitch:0,
+                zoom:12
+              },
+              }"
+            [useResizeHandler]="true">
+
+          </plotly-plot>
+
+        </div>
+        <div class="card-footer">
+          <button class="btn bg-button-color w-25 border-botton-homepage m-2 shadow" [routerLink]="[nest.id]">
+            Editar
+          </button>
+          <button class="btn bg-info w-25 border-botton-homepage m-2 shadow" [routerLink]="'info/'+[nest.id]">
+            Info
+          </button>
+        </div>
+
+      </div>
     </div>
   </div>
 

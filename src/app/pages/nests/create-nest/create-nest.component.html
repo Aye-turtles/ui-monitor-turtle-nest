@@ -1,1 +1,159 @@
-<p>create-nest works!</p>
+<div class="container-fluid">
+  <!-- Barra de navegación -->
+  <div class="row pt-3 pb-2 bg-default-color">
+    <div class="col-6">
+      <img ngSrc="assets/Logo.svg" height="40" width="40" class="img-thumbnail mx-2"
+           style="cursor: pointer" [routerLink]="['/homepage']" alt="logo">
+      <span class="h5">Nidos</span>
+    </div>
+    <div class="col-6">
+      <span class="float-end">{{ this.currentUser?.name }} {{ this.currentUser?.lastName }}</span>
+    </div>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="row">
+    <div class="col-md-9 offset-md-2">
+      <button class="btn bg-button-red w-25 border-bottom-homepage my-4 shadow" (click)="goBack()">
+        <span>Regresar</span>
+      </button>
+      <button class="btn bg-button-color w-25 border-bottom-homepage mx-4 shadow" (click)="saveNest()">
+        <span>{{isCreateMode ? 'Crear Nido' : 'Actualizar Nido'}}</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Formulario -->
+  <div class="row">
+    <div class="col-md-9 offset-md-2">
+      <form [formGroup]="formGroup" (ngSubmit)="saveNest()">
+
+        <!-- Identificador del Nido -->
+        <div class="mb-3">
+          <label for="assignedID" class="form-label">ID Asignado</label>
+          <input type="text" class="form-control shadow" id="assignedID" formControlName="assignedID">
+          <div *ngIf="formGroup.get('assignedID')?.invalid && formGroup.get('assignedID')?.touched" class="text-danger">
+            El ID asignado es requerido.
+          </div>
+        </div>
+
+        <!-- Latitud -->
+        <div class="mb-3">
+          <label for="latitude" class="form-label">Latitud</label>
+          <input type="text" class="form-control shadow" id="latitude" formControlName="latitude">
+          <div *ngIf="formGroup.get('latitude')?.invalid && formGroup.get('latitude')?.touched" class="text-danger">
+            La latitud es requerida.
+          </div>
+        </div>
+
+        <!-- Longitud -->
+        <div class="mb-3">
+          <label for="longitude" class="form-label">Longitud</label>
+          <input type="text" class="form-control shadow" id="longitude" formControlName="longitude">
+          <div *ngIf="formGroup.get('longitude')?.invalid && formGroup.get('longitude')?.touched" class="text-danger">
+            La longitud es requerida.
+          </div>
+        </div>
+
+        <!-- Sensor -->
+        <div class="mb-3">
+          <label for="sensor" class="form-label">Sensor</label>
+          <select class="form-select shadow" id="sensor" formControlName="sensor">
+            <option *ngFor="let sensor of sensors" [value]="sensor.id">{{ sensor.assignedID }}</option>
+          </select>
+          <div *ngIf="formGroup.get('sensor')?.invalid && formGroup.get('sensor')?.touched" class="text-danger">
+            El sensor es requerido.
+          </div>
+        </div>
+
+        <!-- Organización -->
+        <div class="mb-3">
+          <label for="organization" class="form-label">Organización</label>
+          <select class="form-select shadow" id="organization" formControlName="organization">
+            <option *ngFor="let org of organizations" [value]="org.id">{{ org.name }}</option>
+          </select>
+          <div *ngIf="formGroup.get('organization')?.invalid && formGroup.get('organization')?.touched" class="text-danger">
+            La organización es requerida.
+          </div>
+        </div>
+
+        <!-- Responsable -->
+        <div class="mb-3">
+          <label for="responsible" class="form-label">Responsable</label>
+          <select class="form-select shadow" id="responsible" formControlName="responsible">
+            <option *ngFor="let user of users" [value]="user.id">{{ user.name }} {{ user.lastName }}</option>
+          </select>
+          <div *ngIf="formGroup.get('responsible')?.invalid && formGroup.get('responsible')?.touched" class="text-danger">
+            El responsable es requerido.
+          </div>
+        </div>
+
+        <!-- Activo -->
+        <div class="form-check mb-3">
+          <input type="checkbox" class="form-check-input" id="isActive" formControlName="isActive">
+          <label class="form-check-label" for="isActive">Nido Activo</label>
+        </div>
+
+        <!-- Cantidad de Huevos -->
+        <div class="mb-3">
+          <label for="eggsQuantity" class="form-label">Cantidad de Huevos</label>
+          <input type="number" class="form-control shadow" id="eggsQuantity" formControlName="eggsQuantity">
+        </div>
+
+        <!-- Cantidad de Crías -->
+        <div class="mb-3">
+          <label for="hatchlingsQuantity" class="form-label">Cantidad de Crías</label>
+          <input type="number" class="form-control shadow" id="hatchlingsQuantity" formControlName="hatchlingsQuantity">
+        </div>
+        <!-- Cantidad de deppredados -->
+        <div class="mb-3">
+          <label for="depredatedEggsQuantity" class="form-label">Cantidad depredados</label>
+          <input type="number" class="form-control shadow" id="depredatedEggsQuantity" formControlName="depredatedEggsQuantity">
+        </div>
+        <!-- Cantidad de infertiles -->
+        <div class="mb-3">
+          <label for="infertileEggs" class="form-label">Cantidad depredados</label>
+          <input type="number" class="form-control shadow" id="infertileEggs" formControlName="infertileEggs">
+        </div>
+        <!-- Zona -->
+        <div class="mb-3">
+          <label for="zone" class="form-label">Zona</label>
+          <input type="text" class="form-control shadow" id="zone" formControlName="zone">
+        </div>
+
+        <!-- Fecha de Puesta -->
+        <div class="mb-3">
+          <label for="layingDate" class="form-label">Fecha de Puesta</label>
+          <input type="date" class="form-control shadow" id="layingDate" formControlName="layingDate">
+        </div>
+
+        <!-- Otros campos de fechas -->
+        <div class="mb-3">
+          <label for="collectionDate" class="form-label">Fecha de Recolección</label>
+          <input type="date" class="form-control shadow" id="collectionDate" formControlName="collectionDate">
+        </div>
+
+        <div class="mb-3">
+          <label for="monitoringStartDate" class="form-label">Fecha de Inicio de Monitoreo</label>
+          <input type="date" class="form-control shadow" id="monitoringStartDate" formControlName="monitoringStartDate">
+        </div>
+
+        <div class="mb-3">
+          <label for="monitoringEndDate" class="form-label">Fecha de Fin de Monitoreo</label>
+          <input type="date" class="form-control shadow" id="monitoringEndDate" formControlName="monitoringEndDate">
+        </div>
+
+        <div class="mb-3">
+          <label for="firstHatchingRecordedDate" class="form-label">Fecha de Fin de Monitoreo</label>
+          <input type="date" class="form-control shadow" id="firstHatchingRecordedDate" formControlName="firstHatchingRecordedDate">
+        </div>
+
+        <div class="mb-3">
+          <label for="nestCleaningDate" class="form-label">Fecha de Fin de Monitoreo</label>
+          <input type="date" class="form-control shadow" id="nestCleaningDate" formControlName="nestCleaningDate">
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>

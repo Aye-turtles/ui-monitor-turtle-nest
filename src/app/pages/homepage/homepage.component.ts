@@ -6,10 +6,10 @@ import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {LocalStorageService} from "../../local-storage.service";
 import {UserControllersService} from "../../services/userControllers.service";
 import {UserRes} from "../../model/userRes";
-import {NestsControllerService} from "../../nestsController.service";
 import {NestsRes} from "../../model/nestsRes";
 import {RouterLink} from "@angular/router";
 import {DataRowOutlet} from "@angular/cdk/table";
+import {NestsControllerService} from "../../services/nestsController.service";
 
 @Component({
   selector: 'app-homepage',

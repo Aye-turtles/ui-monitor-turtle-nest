@@ -1,9 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {CommonModule, Location, NgOptimizedImage} from "@angular/common";
 import {Router, RouterLink} from "@angular/router";
 import {SensorsRes} from "../../model/sensorsRes";
 import {SensorsControllerService} from "../../services/sensorsController.service";
 import {LocalStorageService} from "../../local-storage.service";
+import {NestsRes} from "../../model/nestsRes";
+
+import * as PlotlyJS from 'plotly.js-dist-min';
+import { PlotlyModule } from 'angular-plotly.js';
+import {NestsControllerService} from "../../services/nestsController.service";
+
+PlotlyModule.plotlyjs = PlotlyJS;
+
 
 @Component({
   selector: 'app-nests',
@@ -11,28 +19,45 @@ import {LocalStorageService} from "../../local-storage.service";
   imports: [
     CommonModule,
     NgOptimizedImage,
-    RouterLink
-
+    RouterLink,
+    PlotlyModule
   ],
   templateUrl: './nests.component.html',
   styleUrl: './nests.component.css'
 })
 export class NestsComponent implements OnInit {
   protected currentUser: any;
-  protected sensors: SensorsRes[] = [];
-
+  protected nestList: NestsRes[];
 
   constructor(private location: Location,
-              private sensorService: SensorsControllerService,
+              private nestService: NestsControllerService,
               private storage: LocalStorageService,
               private router: Router) {
   }
 
   ngOnInit() {
     this.currentUser = this.storage.currentUser;
+    this.nestService.getAllNests().subscribe(data =>{
+      if (data) {
+        this.nestList = data
+      }
+    })
   }
 
   goBack() {
     this.location.back();
+  }
+
+  constructData(nest: NestsRes) {
+    return [{
+      type:'scattermap',
+      lat:[nest.latitude],
+      lon:[nest.longitude],
+      mode:'markers',
+      marker: {
+        size:10
+      },
+      text:['Montreal']
+    }];
   }
 }

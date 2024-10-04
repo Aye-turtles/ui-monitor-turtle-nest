@@ -1,0 +1,4 @@
+.disabled {
+  opacity: 0.6; /* Hace que el div parezca deshabilitado */
+  background-color: #f5f5f5; /* Cambia el color de fondo si lo necesitas */
+}
