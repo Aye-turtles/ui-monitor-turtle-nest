@@ -1,1 +1,18 @@
-<p>grafica works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <plotly-plot [data]="graphTemperature.data" [layout]="graphTemperature.layout"></plotly-plot>
+
+    </div>
+    <div class="col-6">
+      <plotly-plot [data]="graphEnergy.data" [layout]="graphEnergy.layout"></plotly-plot>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-6">
+      <plotly-plot [data]="graphPosition.data" [layout]="graphPosition.layout"></plotly-plot>
+
+    </div>
+  </div>
+</div>

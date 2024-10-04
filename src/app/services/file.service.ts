@@ -20,7 +20,7 @@ export class FileService {
   }
 
   // Consultar archivo desde el backend con el nombre del archivo
-  getFile(filename: string): Observable<Blob> {
-    return this.http.get(`${this.getUrl}/${filename}`, { responseType: 'blob' });
+  getFile(filename: string): Observable<string> {
+    return this.http.get(`${this.getUrl}/${filename}`, { responseType: 'text' });
   }
 }

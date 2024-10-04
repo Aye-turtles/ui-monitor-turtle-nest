@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Location, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
+import {DecimalPipe, Location, NgForOf, NgIf, NgOptimizedImage} from "@angular/common";
 import {PlotlySharedModule} from "angular-plotly.js";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
 import {NestsRes} from "../../../model/nestsRes";
@@ -29,7 +29,8 @@ import {FileComponent} from "../info/file/file.component";
     RecordsTableComponent,
     GeneralComponent,
     FileComponent,
-    NgIf
+    NgIf,
+    DecimalPipe
   ],
   templateUrl: './nest-info.component.html',
   styleUrl: './nest-info.component.scss'
@@ -37,9 +38,11 @@ import {FileComponent} from "../info/file/file.component";
 export class NestInfoComponent implements OnInit {
   protected currentUser: any;
   protected nest: NestsRes;
-  protected id: number
+  protected id: number;
+  recordsId: string = "";
   uploadForm: FormGroup;
   selectedFile: File;
+  percentage: number = 0
 
   constructor(private location: Location,
               private nestService: NestsControllerService,
@@ -77,13 +80,14 @@ export class NestInfoComponent implements OnInit {
       let sensor = this.nest.sensor;
       let sensorAssignedID = sensor.assignedID;
       let assignedID = this.nest.assignedID;
-      console.log(assignedID + "-" + sensorAssignedID)
+      this.recordsId = assignedID + "-" + sensorAssignedID;
       this.evaluateService.evaluateNest(assignedID, sensorAssignedID).subscribe(data => {
-        if (data == 1) {
+        if (data.clas == 1) {
           this.nest.nestBehavior = "Normal"
         }else{
           this.nest.nestBehavior = "Anomalia detectada"
         }
+        this.percentage = data.result
       })
     });
   }

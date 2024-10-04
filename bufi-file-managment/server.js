@@ -3,16 +3,22 @@ const multer = require('multer');
 const fs = require('fs');
 const path = require('path');
 const axios = require('axios');
+const cors = require('cors');
 
 const app = express();
 
+app.use(cors({
+  origin: '*', // Permite solicitudes desde Angular
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos permitidos
+  credentials: true // Permite el envío de cookies si es necesario
+}));
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, path.join(__dirname, './uploads'));
   },
   filename: (req, file, cb) => {
-    cb(null, file.originalname);  
+    cb(null, file.originalname);
   }
 });
 
@@ -33,9 +39,9 @@ app.post('/upload-file', upload.single('file'), async (req, res) => {
 
   const localFilePath = path.join(__dirname, './uploads', file.originalname);
   const fileContent = fs.readFileSync(localFilePath, 'utf-8');
-  const base64Content = Buffer.from(fileContent).toString('base64');  
+  const base64Content = Buffer.from(fileContent).toString('base64');
   try {
-    
+
     const response = await axios.put(
       `https://api.github.com/repos/${repoOwner}/${repoName}/contents/uploads/${file.originalname}`,
       {
@@ -60,7 +66,7 @@ app.post('/upload-file', upload.single('file'), async (req, res) => {
 
 app.get('/get-file/:filename', async (req, res) => {
   const filename = req.params.filename;
-  const localFilePath = path.join(__dirname, './uploads', filename);  
+  const localFilePath = path.join(__dirname, './uploads', filename);
   const githubFileUrl = `https://raw.githubusercontent.com/Aye-turtles/records/refs/heads/main/uploads/${filename}`;
 
   try {

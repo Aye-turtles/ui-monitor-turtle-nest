@@ -28,17 +28,4 @@ export class FileComponent {
       }
     );
   }
-
-  // Consultar el archivo por su nombre
-  onGetFile(filename: string) {
-    this.fileService.getFile(filename).subscribe(
-      (blob) => {
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);  // Abre el archivo en una nueva ventana
-      },
-      (error) => {
-        console.error('Error al consultar el archivo:', error);
-      }
-    );
-  }
 }
