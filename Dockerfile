@@ -1,4 +1,3 @@
-# Dockerfile para el Frontend (Angular)
 # Etapa 1: Construcción de la aplicación Angular
 FROM node:18-alpine AS build
 
@@ -21,7 +20,7 @@ RUN npm run build --prod
 FROM nginx:alpine
 
 # Copiar la aplicación Angular construida al directorio de Nginx
-COPY --from=build /app/dist/ui /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
 
 # Exponer el puerto 80
 EXPOSE 80
